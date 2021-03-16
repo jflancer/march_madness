@@ -1,0 +1,357 @@
+Rk,School,Conf,ORtg,DRtg,NRtg,NCAA_Name,NCAA_Name_2
+1,Gonzaga,WCC,125.55,89.55,36.01,Gonzaga,Gonzaga
+2,Illinois,Big Ten,120.64,85.97,34.68,Illinois,Illinois
+3,Michigan,Big Ten,120.64,86.59,34.05,Michigan,Michigan
+4,Baylor,Big 12,123.92,91,32.92,Baylor,Baylor
+5,Iowa,Big Ten,126.29,93.39,32.9,Iowa,Iowa
+6,Houston,AAC,120.09,86.62,33.47,Houston,Houston
+7,Alabama,SEC,112.67,84.58,28.1,Alabama,Alabama
+8,Ohio State,Big Ten,122.61,93.79,28.82,Ohio St.,Ohio St.
+9,Colgate,Patriot,119.08,93.66,25.42,Colgate,Colgate
+10,Villanova,Big East,120.02,93.41,26.61,Villanova,Villanova
+11,Arkansas,SEC,113.39,88.45,24.94,Arkansas,Arkansas
+12,Tennessee,SEC,111.42,85.1,26.32,Tennessee,Tennessee
+13,Florida State,ACC,117.65,91.26,26.39,Florida St.,Florida St.
+14,Wisconsin,Big Ten,113.09,86.79,26.3,Wisconsin,Wisconsin
+15,Creighton,Big East,116.16,91.2,24.96,Creighton,Creighton
+16,Purdue,Big Ten,115.35,89.74,25.61,Purdue,Purdue
+17,Southern California,Pac-12,113.97,88.86,25.11,Southern California,Southern California
+18,Connecticut,Big East,114.36,89.7,24.66,Connecticut,UConn
+19,Colorado,Pac-12,115.56,90.72,24.84,Colorado,Colorado
+20,Virginia,ACC,118.28,91.96,26.32,Virginia,Virginia
+21,Kansas,Big 12,111.98,87.66,24.31,Kansas,Kansas
+22,Texas Tech,Big 12,112.84,88.51,24.33,Texas Tech,Texas Tech
+23,North Carolina,ACC,111.02,87.64,23.38,North Carolina,North Carolina
+24,Texas,Big 12,114.55,91.16,23.39,Texas,Texas
+25,West Virginia,Big 12,116.27,93.29,22.98,West Virginia,West Virginia
+26,Louisiana State,SEC,120.97,98.25,22.72,Louisiana St.,LSU
+27,Maryland,Big Ten,114.06,91.31,22.75,Maryland,Maryland
+28,Rutgers,Big Ten,109.89,88.08,21.81,Rutgers,Rutgers
+29,St. Bonaventure,A-10,112.76,89.28,23.48,St. Bonaventure,St. Bonaventure
+30,Florida,SEC,112.34,90.95,21.4,Florida,Florida
+31,Penn State,Big Ten,113.8,92.07,21.73,Penn St.,Penn St.
+32,San Diego State,MWC,111.38,89.6,21.78,San Diego St.,San Diego St.
+33,Loyola (IL),MVC,111.63,87.81,23.82,Loyola (IL),Loyola Chicago
+34,Brigham Young,WCC,112.92,91.44,21.48,Brigham Young,BYU
+35,Oklahoma State,Big 12,109.77,89.66,20.11,Oklahoma St.,Oklahoma St.
+36,Georgia Tech,ACC,115.35,94.12,21.24,Georgia Tech,Georgia Tech
+37,Duke,ACC,115.98,93.98,22,Duke,Duke
+38,Indiana,Big Ten,110.74,91.16,19.58,Indiana,Indiana
+39,Syracuse,ACC,113.94,93.73,20.21,Syracuse,Syracuse
+40,Oklahoma,Big 12,112.79,93.24,19.55,Oklahoma,Oklahoma
+41,Virginia Tech,ACC,111.83,91.69,20.14,Virginia Tech,Virginia Tech
+42,Oregon,Pac-12,114.97,94.94,20.04,Oregon,Oregon
+43,Clemson,ACC,108.52,88.38,20.15,Clemson,Clemson
+44,Saint Louis,A-10,112.28,92.76,19.53,Saint Louis,Saint Louis
+45,Memphis,AAC,103.27,85.47,17.81,Memphis,Memphis
+46,Missouri,SEC,111.36,93.08,18.29,Missouri,Missouri
+47,Arizona,Pac-12,113.86,95.22,18.64,Arizona,Arizona
+48,Kentucky,SEC,108.83,90.77,18.07,Kentucky,Kentucky
+49,UCLA,Pac-12,114.28,95.93,18.36,UCLA,UCLA
+50,Virginia Commonwealth,A-10,106.18,87.75,18.43,Virginia Commonwealth,VCU
+51,Minnesota,Big Ten,108.8,91.8,16.99,Minnesota,Minnesota
+52,Seton Hall,Big East,111.04,93.48,17.57,Seton Hall,Seton Hall
+53,Mississippi,SEC,106.06,88.12,17.95,Mississippi,Ole Miss
+54,Xavier,Big East,110.74,93.57,17.17,Xavier,Xavier
+55,Georgetown,Big East,108.04,91.04,17,Georgetown,Georgetown
+56,Utah State,MWC,105.85,89.29,16.56,Utah St.,Utah St.
+57,Louisville,ACC,110.15,93.09,17.06,Louisville,Louisville
+58,Southern Methodist,AAC,109.79,93.88,15.91,Southern Methodist,SMU
+59,Michigan State,Big Ten,107.82,92.23,15.6,Michigan St.,Michigan St.
+60,Northwestern,Big Ten,106.89,91.53,15.36,Northwestern,Northwestern
+61,Davidson,A-10,114.92,98.83,16.09,Davidson,Davidson
+62,Auburn,SEC,111.47,96.24,15.23,Auburn,Auburn
+63,St. John's (NY),Big East,111.19,96.26,14.92,St. John's (NY),St. John's (NY)
+64,North Carolina State,ACC,111.11,95.98,15.13,North Carolina St.,NC State
+65,Providence,Big East,108.38,94,14.37,Providence,Providence
+66,Boise State,MWC,108.96,95.13,13.84,Boise St.,Boise St.
+67,Drake,MVC,113.89,99.02,14.87,Drake,Drake
+68,Richmond,A-10,111.55,97.01,14.54,Richmond,Richmond
+69,Wichita State,AAC,109.77,95.57,14.2,Wichita St.,Wichita St.
+70,Utah,Pac-12,111.1,97.24,13.86,Utah,Utah
+71,Marquette,Big East,108.33,95.24,13.09,Marquette,Marquette
+72,Mississippi State,SEC,107.3,93.97,13.33,Mississippi St.,Mississippi St.
+73,Pittsburgh,ACC,109.45,96.51,12.94,Pittsburgh,Pittsburgh
+74,Notre Dame,ACC,115.14,101.85,13.29,Notre Dame,Notre Dame
+75,Colorado State,MWC,107.68,94.86,12.82,Colorado St.,Colorado St.
+76,Stanford,Pac-12,104.54,92.81,11.73,Stanford,Stanford
+77,Wright State,Horizon,106.46,95.7,10.76,Wright St.,Wright St.
+78,Toledo,MAC (West),111.87,100.94,10.93,Toledo,Toledo
+79,Oregon State,Pac-12,110.14,98.49,11.65,Oregon St.,Oregon St.
+80,Buffalo,MAC (East),106.16,96.07,10.09,Buffalo,Buffalo
+81,Saint Mary's (CA),WCC,101.47,90.01,11.46,Saint Mary's (CA),Saint Mary's (CA)
+82,Dayton,A-10,109.47,97.91,11.56,Dayton,Dayton
+83,North Texas,CUSA,105.3,93.77,11.53,North Texas,North Texas
+84,Nebraska,Big Ten,102.64,91.34,11.3,Nebraska,Nebraska
+85,Georgia,SEC,108.93,97.83,11.11,Georgia,Georgia
+86,Vanderbilt,SEC,109.55,99.24,10.31,Vanderbilt,Vanderbilt
+87,Louisiana Tech,CUSA,102.88,93.04,9.85,Louisiana Tech,Louisiana Tech
+88,Furman,Southern,110.05,100.47,9.57,Furman,Furman
+89,Abilene Christian,Southland,102,92.97,9.03,Abilene Christian,Abilene Christian
+90,Rhode Island,A-10,103.87,94.71,9.16,Rhode Island,Rhode Island
+91,Central Florida,AAC,107.42,97.92,9.5,Central Florida,UCF
+92,UC-Santa Barbara,Big West,107.68,96.99,10.69,UC-Santa Barbara,UC Santa Barbara
+93,Marshall,CUSA,108.73,100.12,8.61,Marshall,Marshall
+94,Massachusetts,A-10,106.78,98.31,8.47,Massachusetts,Massachusetts
+95,Ohio,MAC (East),110.82,102.72,8.11,Ohio,Ohio
+96,Alabama-Birmingham,CUSA,103.18,94.19,8.99,Alabama-Birmingham,UAB
+97,Washington State,Pac-12,100.9,92.15,8.75,Washington St.,Washington St.
+98,Butler,Big East,103.97,95.92,8.05,Butler,Butler
+99,Western Kentucky,CUSA,105.31,97.13,8.17,Western Kentucky,Western Ky.
+100,Arizona State,Pac-12,107.75,99.33,8.42,Arizona St.,Arizona St.
+101,Nevada,MWC,107.24,98.82,8.42,Nevada,Nevada
+102,Missouri State,MVC,107.11,98.68,8.43,Missouri St.,Missouri St.
+103,San Francisco,WCC,105.15,97.35,7.8,San Francisco,San Francisco
+104,Winthrop,Big South,104,96.95,7.05,Winthrop,Winthrop
+105,Army,Patriot,102.31,96.27,6.04,Army,Army West Point
+106,Loyola Marymount,WCC,106.97,99.2,7.77,Loyola Marymount,Loyola Marymount
+107,Navy,Patriot,106.5,100.12,6.38,Navy,Navy
+108,Liberty,A-Sun,109.84,101.39,8.45,Liberty,Liberty
+109,Tulsa,AAC,102.7,96.02,6.69,Tulsa,Tulsa
+110,Cincinnati,AAC,103.55,96.73,6.82,Cincinnati,Cincinnati
+111,Miami (FL),ACC,103,96.56,6.44,Miami (FL),Miami (FL)
+112,Belmont,OVC,109.04,103.25,5.8,Belmont,Belmont
+113,North Carolina-Greensboro,Southern,102.67,96.21,6.46,North Carolina-Greensboro,UNC Greensboro
+114,Grand Canyon,WAC,103.45,95.99,7.46,Grand Canyon,Grand Canyon
+115,South Carolina,SEC,104.45,97.58,6.87,South Carolina,South Carolina
+116,DePaul,Big East,98.52,93.3,5.22,DePaul,DePaul
+117,Pepperdine,WCC,106.63,100.58,6.04,Pepperdine,Pepperdine
+118,Duquesne,A-10,101.14,95.63,5.52,Duquesne,Duquesne
+119,George Mason,A-10,101.06,96.37,4.69,George Mason,George Mason
+120,Texas Christian,Big 12,104.16,100.12,4.04,Texas Christian,TCU
+121,Akron,MAC (East),106.32,101.96,4.37,Akron,Akron
+122,Vermont,AEC,105.94,101.03,4.91,Vermont,Vermont
+123,Temple,AAC,102.14,97.39,4.75,Temple,Temple
+124,Wake Forest,ACC,102.86,99.28,3.58,Wake Forest,Wake Forest
+125,Kent State,MAC (East),104.08,100.08,4,Kent St.,Kent St.
+126,South Dakota State,Summit,109.62,104.9,4.72,South Dakota St.,South Dakota St.
+127,UC-Riverside,Big West,101.88,96.64,5.23,UC-Riverside,UC Riverside
+128,University of California,Pac-12,104.14,100.27,3.87,University of California,California
+129,Eastern Washington,Big Sky,105.6,102.22,3.38,Eastern Washington,Eastern Wash.
+130,Texas A&M,SEC,101.5,98,3.5,Texas A&M,Texas A&M
+131,Indiana State,MVC,102.03,97.73,4.31,Indiana St.,Indiana St.
+132,Wofford,Southern,105.3,101.34,3.97,Wofford,Wofford
+133,East Tennessee State,Southern,102.77,99.13,3.64,East Tennessee St.,ETSU
+134,UC-Irvine,Big West,98.19,93.7,4.49,UC-Irvine,UC Irvine
+135,Weber State,Big Sky,106.6,104.05,2.55,Weber St.,Weber St.
+136,Mercer,Southern,105.79,102.87,2.93,Mercer,Mercer
+137,Loyola (MD),Patriot,100.04,97.89,2.16,Loyola (MD),Loyola Maryland
+138,Boston College,ACC,105.58,101.95,3.63,Boston College,Boston College
+139,Pacific,WCC,102.13,98.95,3.18,Pacific,Pacific
+140,East Carolina,AAC,98.9,96.38,2.52,East Carolina,East Carolina
+141,Boston University,Patriot,104.57,104.17,0.4,Boston University,Boston U.
+142,Tulane,AAC,99.82,97.44,2.38,Tulane,Tulane
+143,Bowling Green State,MAC (East),104.5,102.91,1.59,Bowling Green St.,Bowling Green
+144,Bryant,NEC,103.46,101.56,1.9,Bryant,Bryant
+145,Texas-El Paso,CUSA,102.37,100.28,2.09,Texas-El Paso,UTEP
+146,Kansas State,Big 12,99.95,98.64,1.31,Kansas St.,Kansas St.
+147,James Madison,CAA,103.86,102.06,1.8,James Madison,James Madison
+148,Bradley,MVC,102.44,101,1.45,Bradley,Bradley
+149,Drexel,CAA,106.5,105.05,1.44,Drexel,Drexel
+150,VMI,Southern,106.36,105.83,0.53,VMI,VMI
+151,South Florida,AAC,100.95,100.47,0.48,South Florida,South Fla.
+152,Maryland-Baltimore County,AEC,100.21,99.49,0.73,Maryland-Baltimore County,UMBC
+153,Holy Cross,Patriot,102.49,103.53,-1.04,Holy Cross,Holy Cross
+154,Northeastern,CAA,97.98,97.59,0.39,Northeastern,Northeastern
+155,Morehead State,OVC,97.37,97.35,0.02,Morehead St.,Morehead St.
+156,Iowa State,Big 12,100.49,100.25,0.24,Iowa St.,Iowa St.
+157,Washington,Pac-12,101.66,100.9,0.75,Washington,Washington
+158,Southern Utah,Big Sky,106.26,106.77,-0.51,Southern Utah,Southern Utah
+159,Old Dominion,CUSA,100.88,100.89,-0.01,Old Dominion,Old Dominion
+160,Oral Roberts,Summit,106.42,106.95,-0.54,Oral Roberts,Oral Roberts
+161,Iona,MAAC,99.73,100.28,-0.55,Iona,Iona
+162,Ball State,MAC (West),100.98,102.22,-1.24,Ball St.,Ball St.
+163,Chattanooga,Southern,101.42,102.31,-0.89,Chattanooga,Chattanooga
+164,North Dakota State,Summit,101.47,101.7,-0.22,North Dakota St.,North Dakota St.
+165,Georgia State,Sun Belt,103.62,104.57,-0.95,Georgia St.,Georgia St.
+166,Lafayette,Patriot,107.29,109.71,-2.42,Lafayette,Lafayette
+167,Santa Clara,WCC,98.24,98.95,-0.72,Santa Clara,Santa Clara
+168,Nevada-Las Vegas,MWC,102.96,104.05,-1.09,Nevada-Las Vegas,UNLV
+169,Texas-San Antonio,CUSA,104.89,105.77,-0.89,Texas-San Antonio,UTSA
+170,Wyoming,MWC,107.2,109.22,-2.01,Wyoming,Wyoming
+171,Northern Iowa,MVC,102.09,103.65,-1.57,Northern Iowa,UNI
+172,Cal State Bakersfield,Big West,101.03,101.82,-0.79,Cal St. Bakersfield,CSU Bakersfield
+173,South Dakota,Summit,104.64,106.22,-1.58,South Dakota,South Dakota
+174,Hofstra,CAA,105.31,106.99,-1.68,Hofstra,Hofstra
+175,Stephen F. Austin,Southland,101.46,102.94,-1.48,Stephen F. Austin,SFA
+176,Florida Atlantic,CUSA,100.26,102.98,-2.72,Florida Atlantic,Fla. Atlantic
+177,Miami (OH),MAC (East),104.03,106.65,-2.63,Miami (OH),Miami (OH)
+178,Bellarmine,A-Sun,108,109.25,-1.25,Bellarmine,Bellarmine
+179,Coastal Carolina,Sun Belt,99.02,101.98,-2.96,Coastal Carolina,Coastal Carolina
+180,Eastern Kentucky,OVC,99.55,102.84,-3.29,Eastern Kentucky,Eastern Ky.
+181,New Mexico State,WAC,103.63,105.75,-2.12,New Mexico St.,New Mexico St.
+182,La Salle,A-10,101.02,103.81,-2.79,La Salle,La Salle
+183,American,Patriot,99.34,103.57,-4.23,American,American
+184,Murray State,OVC,101.7,104.04,-2.34,Murray St.,Murray St.
+185,Jacksonville State,OVC,102.08,104.77,-2.7,Jacksonville St.,Jacksonville St.
+186,Hartford,AEC,96.45,99.89,-3.44,Hartford,Hartford
+187,Detroit Mercy,Horizon,107.78,109.99,-2.21,Detroit Mercy,Detroit Mercy
+188,Siena,MAAC,98.79,102.45,-3.66,Siena,Siena
+189,Gardner-Webb,Big South,102.99,105.78,-2.79,Gardner-Webb,Gardner-Webb
+190,Mount St. Mary's,NEC,94.9,99.14,-4.24,Mount St. Mary's,Mt. St. Mary's
+191,Wagner,NEC,100.4,103.91,-3.51,Wagner,Wagner
+192,Sam Houston State,Southland,99.57,103.18,-3.61,Sam Houston St.,Sam Houston St.
+193,Southern Illinois,MVC,99.09,103.43,-4.34,Southern Illinois,Southern Ill.
+194,Fresno State,MWC,98.89,103.54,-4.66,Fresno St.,Fresno St.
+195,Saint Joseph's,A-10,100.91,104.37,-3.46,Saint Joseph's,Saint Joseph's
+196,Bucknell,Patriot,100.37,106.16,-5.8,Bucknell,Bucknell
+197,Albany (NY),AEC,98.47,103.41,-4.94,Albany (NY),Albany (NY)
+198,Rice,CUSA,103.42,107.97,-4.56,Rice,Rice
+199,Valparaiso,MVC,94.56,99.73,-5.17,Valparaiso,Valparaiso
+200,Texas State,Sun Belt,98.17,102.06,-3.89,Texas St.,Texas St.
+201,Cleveland State,Horizon,97.48,101.64,-4.16,Cleveland St.,Cleveland St.
+202,College of Charleston,CAA,102.69,108.14,-5.45,College of Charleston,Col. of Charleston
+203,Delaware,CAA,95.86,101.16,-5.3,Delaware,Delaware
+204,Utah Valley,WAC,99.71,104.59,-4.89,Utah Valley,Utah Valley
+205,Hawaii,Big West,99.94,104.57,-4.63,Hawaii,Hawaii
+206,Elon,CAA,95.35,100.54,-5.19,Elon,Elon
+207,George Washington,A-10,101.52,108.15,-6.63,George Washington,George Washington
+208,Saint Peter's,MAAC,89.93,95.59,-5.67,Saint Peter's,Saint Peter's
+209,Evansville,MVC,104.98,111.27,-6.3,Evansville,Evansville
+210,Norfolk State,MEAC,98.51,103.5,-4.98,Norfolk St.,Norfolk St.
+211,Louisiana,Sun Belt,98.03,104,-5.97,Louisiana,Louisiana
+212,Montana,Big Sky,96.16,103.05,-6.89,Montana,Montana
+213,Monmouth,MAAC,98.26,105.24,-6.98,Monmouth,Monmouth
+214,Illinois State,MVC,97.79,104.13,-6.33,Illinois St.,Illinois St.
+215,Stony Brook,AEC,93.36,100.26,-6.9,Stony Brook,Stony Brook
+216,Massachusetts-Lowell,AEC,98.39,105.17,-6.78,Massachusetts-Lowell,UMass Lowell
+217,Appalachian State,Sun Belt,97.84,105.71,-7.87,Appalachian St.,Appalachian St.
+218,Missouri-Kansas City,Summit,95.6,102.59,-7,Missouri-Kansas City,Kansas City
+219,Charlotte,CUSA,97,103.98,-6.98,Charlotte,Charlotte
+220,Morgan State,MEAC,98.85,105.1,-6.25,Morgan St.,Morgan St.
+221,Radford,Big South,96.52,104.49,-7.97,Radford,Radford
+222,Citadel,Southern,102.97,109.97,-7,Citadel,The Citadel
+223,Nicholls State,Southland,96.77,104.15,-7.38,Nicholls St.,Nicholls St.
+224,South Alabama,Sun Belt,101.42,108.71,-7.3,South Alabama,South Alabama
+225,Long Island University,NEC,93.74,101.97,-8.23,Long Island University,LIU
+226,Northern Kentucky,Horizon,101.43,109.07,-7.65,Northern Kentucky,Northern Ky.
+227,North Carolina-Wilmington,CAA,102.51,109.72,-7.21,North Carolina-Wilmington,UNCW
+228,Austin Peay,OVC,101.92,110.2,-8.29,Austin Peay,Austin Peay
+229,Campbell,Big South,101.13,108.33,-7.21,Campbell,Campbell
+230,Little Rock,Sun Belt,97.51,106.11,-8.6,Little Rock,Little Rock
+231,California Baptist,WAC,104,111.93,-7.93,California Baptist,California Baptist
+232,North Carolina-Asheville,Big South,99,107.79,-8.79,North Carolina-Asheville,UNC Asheville
+233,San Diego,WCC,95.08,102.78,-7.7,San Diego,San Diego
+234,Seattle,WAC,95.07,103.23,-8.16,Seattle,Seattle U
+235,Niagara,MAAC,98.75,107.34,-8.59,Niagara,Niagara
+236,Milwaukee,Horizon,100.38,109.6,-9.22,Milwaukee,Milwaukee
+237,Southern Mississippi,CUSA,92.32,101.75,-9.43,Southern Mississippi,Southern Miss.
+238,Lipscomb,A-Sun,99.42,108.14,-8.73,Lipscomb,Lipscomb
+239,Western Carolina,Southern,98.98,108.12,-9.15,Western Carolina,Western Caro.
+240,Montana State,Big Sky,97.23,106.75,-9.51,Montana St.,Montana St.
+241,Merrimack,NEC,91.47,100.74,-9.27,Merrimack,Merrimack
+242,Texas-Arlington,Sun Belt,96.67,105.96,-9.29,Texas-Arlington,UT Arlington
+243,UC-Davis,Big West,95.46,104.12,-8.67,UC-Davis,UC Davis
+244,New Hampshire,AEC,95.95,106.02,-10.07,New Hampshire,New Hampshire
+245,Longwood,Big South,95.77,105.42,-9.65,Longwood,Longwood
+246,Stetson,A-Sun,99.86,109.08,-9.22,Stetson,Stetson
+247,Texas Southern,SWAC,95.87,105.48,-9.6,Texas Southern,Texas Southern
+248,Cal State Fullerton,Big West,101.31,110.71,-9.4,Cal St. Fullerton,Cal St. Fullerton
+249,Canisius,MAAC,97.64,107.86,-10.22,Canisius,Canisius
+250,Portland State,Big Sky,90.06,100.42,-10.36,Portland St.,Portland St.
+251,Arkansas State,Sun Belt,97.7,108.05,-10.35,Arkansas St.,Arkansas St.
+252,Northern Colorado,Big Sky,95.77,106.74,-10.97,Northern Colorado,Northern Colo.
+253,Tarleton State,WAC,96.49,106.86,-10.37,Tarleton St.,Tarleton St.
+254,Marist,MAAC,90.31,101.56,-11.25,Marist,Marist
+255,St. Francis (NY),NEC,101.07,111.61,-10.53,St. Francis (NY),St. Francis Brooklyn
+256,Quinnipiac,MAAC,90.25,101.27,-11.03,Quinnipiac,Quinnipiac
+257,Fairleigh Dickinson,NEC,100.37,111.55,-11.18,Fairleigh Dickinson,Fairleigh Dickinson
+258,Oakland,Horizon,101.01,111.51,-10.5,Oakland,Oakland
+259,Saint Francis (PA),NEC,94.53,106.12,-11.59,Saint Francis (PA),Saint Francis (PA)
+260,Prairie View,SWAC,92.92,103.16,-10.24,Prairie View,Prairie View
+261,UC-San Diego,Big West,99.81,110.98,-11.17,UC-San Diego,UC San Diego
+262,Samford,Southern,94.75,105.43,-10.68,Samford,Samford
+263,Lehigh,Patriot,93.36,106.42,-13.07,Lehigh,Lehigh
+264,Youngstown State,Horizon,100.39,112.3,-11.91,Youngstown St.,Youngstown St.
+265,NJIT,AEC,94.7,107.02,-12.32,NJIT,NJIT
+266,Towson,CAA,98.78,111.74,-12.96,Towson,Towson
+267,Sacramento State,Big Sky,100.17,112.98,-12.81,Sacramento St.,Sacramento St.
+268,Green Bay,Horizon,99.08,111.3,-12.22,Green Bay,Green Bay
+269,Florida Gulf Coast,A-Sun,90.86,103.32,-12.46,Florida Gulf Coast,FGCU
+270,Georgia Southern,Sun Belt,91.83,105.27,-13.44,Georgia Southern,Ga. Southern
+271,Idaho State,Big Sky,90.33,103.78,-13.45,Idaho St.,Idaho St.
+272,Southeast Missouri State,OVC,93.21,106.61,-13.4,Southeast Missouri St.,Southeast Mo. St.
+273,North Alabama,A-Sun,93.53,106.61,-13.09,North Alabama,North Ala.
+274,Cal State Long Beach,Big West,95.76,107.69,-11.93,Cal St. Long Beach,Long Beach St.
+275,High Point,Big South,94.56,108.43,-13.87,High Point,High Point
+276,Cal State Northridge,Big West,98.88,112.03,-13.15,Cal St. Northridge,CSUN
+277,Texas-Rio Grande Valley,WAC,88.05,101.64,-13.59,Texas-Rio Grande Valley,UTRGV
+278,Sacred Heart,NEC,97.1,111.73,-14.63,Sacred Heart,Sacred Heart
+279,William & Mary,CAA,92.03,107.34,-15.3,William & Mary,William & Mary
+280,Fordham,A-10,84.2,99.62,-15.42,Fordham,Fordham
+281,Middle Tennessee,CUSA,90.03,103.82,-13.79,Middle Tennessee,Middle Tenn.
+282,Western Michigan,MAC (West),91.64,106.17,-14.53,Western Michigan,Western Mich.
+283,Louisiana-Monroe,Sun Belt,91.96,106.48,-14.52,Louisiana-Monroe,Louisiana-Monroe
+284,Fairfield,MAAC,93.53,108.53,-15,Fairfield,Fairfield
+285,IUPUI,Horizon,93.72,107.61,-13.89,IUPUI,IUPUI
+286,Jacksonville,A-Sun,91.62,106.15,-14.53,Jacksonville,Jacksonville
+287,North Dakota,Summit,94.22,108.85,-14.63,North Dakota,North Dakota
+288,Florida International,CUSA,96.16,110.5,-14.34,Florida International,FIU
+289,New Orleans,Southland,94.49,108.82,-14.33,New Orleans,New Orleans
+290,North Florida,A-Sun,98.73,113.81,-15.09,North Florida,North Florida
+291,Coppin State,MEAC,88.94,102.78,-13.84,Coppin St.,Coppin St.
+292,Illinois-Chicago,Horizon,90.87,105.86,-14.99,Illinois-Chicago,UIC
+293,Purdue-Fort Wayne,Horizon,98.36,114.11,-15.75,Purdue-Fort Wayne,Purdue Fort Wayne
+294,Binghamton,AEC,96.18,112.24,-16.06,Binghamton,Binghamton
+295,Manhattan,MAAC,88.05,103.39,-15.34,Manhattan,Manhattan
+296,Jackson State,SWAC,86.18,100.51,-14.34,Jackson St.,Jackson St.
+297,Rider,MAAC,98.22,114.06,-15.84,Rider,Rider
+298,Central Michigan,MAC (West),97.34,112.58,-15.24,Central Michigan,Central Mich.
+299,Troy,Sun Belt,89.53,105.76,-16.24,Troy,Troy
+300,Florida A&M,MEAC,87.65,102.87,-15.22,Florida A&M,Florida A&M
+301,Eastern Illinois,OVC,92.79,109.48,-16.69,Eastern Illinois,Eastern Ill.
+302,Robert Morris,Horizon,96.57,113.73,-17.16,Robert Morris,Robert Morris
+303,New Mexico,MWC,88.91,106.04,-17.13,New Mexico,New Mexico
+304,Western Illinois,Summit,94.08,110.54,-16.45,Western Illinois,Western Ill.
+305,Air Force,MWC,93.98,113.51,-19.54,Air Force,Air Force
+306,Hampton,Big South,92.88,110.87,-17.99,Hampton,Hampton
+307,Central Connecticut State,NEC,92.26,109.7,-17.44,Central Connecticut St.,Central Conn. St.
+308,South Carolina Upstate,Big South,93.39,111.09,-17.7,South Carolina Upstate,USC Upstate
+309,Omaha,Summit,91.25,108.64,-17.39,Omaha,Omaha
+310,Lamar,Southland,90.58,107.4,-16.82,Lamar,Lamar University
+311,Eastern Michigan,MAC (West),94.88,112.95,-18.07,Eastern Michigan,Eastern Mich.
+312,Presbyterian,Big South,89.41,108.12,-18.71,Presbyterian,Presbyterian
+313,Tennessee Tech,OVC,93.4,111.76,-18.37,Tennessee Tech,Tennessee Tech
+314,Tennessee State,OVC,87.88,106.13,-18.25,Tennessee St.,Tennessee St.
+315,Southern,SWAC,89.54,106.6,-17.07,Southern,Southern U.
+316,Northwestern State,Southland,94.31,111.68,-17.37,Northwestern St.,Northwestern St.
+317,Howard,MEAC,96.01,114.64,-18.63,Howard,Howard
+318,North Carolina A&T,MEAC,91.65,108.63,-16.98,North Carolina A&T,N.C. A&T
+319,Kennesaw State,A-Sun,86.87,106.13,-19.26,Kennesaw St.,Kennesaw St.
+320,Portland,WCC,95.88,114.92,-19.04,Portland,Portland
+321,Northern Arizona,Big Sky,95.08,115.84,-20.75,Northern Arizona,Northern Ariz.
+322,SIU Edwardsville,OVC,90.6,110.52,-19.92,SIU Edwardsville,SIUE
+323,Grambling,SWAC,89.11,108.49,-19.38,Grambling,Grambling
+324,Maine,AEC,81.33,102.32,-20.99,Maine,Maine
+325,Dixie State,WAC,89.28,108.12,-18.84,Dixie St.,Dixie St.
+326,Cal Poly,Big West,86.58,106.89,-20.32,Cal Poly,Cal Poly
+327,Central Arkansas,Southland,94.5,113.34,-18.84,Central Arkansas,Central Ark.
+328,North Carolina Central,MEAC,91.02,112.01,-20.99,North Carolina Central,N.C. Central
+329,Incarnate Word,Southland,91.93,113.16,-21.23,Incarnate Word,Incarnate Word
+330,Charleston Southern,Big South,87.31,109.14,-21.83,Charleston Southern,Charleston So.
+331,Houston Baptist,Southland,90.87,112.52,-21.65,Houston Baptist,Houston Baptist
+332,Texas A&M-Corpus Christi,Southland,87.36,109.76,-22.39,Texas A&M-Corpus Christi,A&M-Corpus Christi
+333,Northern Illinois,MAC (West),89.02,112.7,-23.69,Northern Illinois,Northern Ill.
+334,Denver,Summit,91.24,114.66,-23.42,Denver,Denver
+335,San Jose State,MWC,91.94,114.43,-22.49,San Jose St.,San Jose St.
+336,Southeastern Louisiana,Southland,88.58,111.68,-23.11,Southeastern Louisiana,Southeastern La.
+337,McNeese State,Southland,92.85,117.2,-24.35,McNeese St.,McNeese
+338,Tennessee-Martin,OVC,90.28,116.37,-26.08,Tennessee-Martin,UT Martin
+339,Alabama A&M,SWAC,81.19,107.33,-26.14,Alabama A&M,Alabama A&M
+340,Idaho,Big Sky,86.96,115.32,-28.36,Idaho,Idaho
+341,Alcorn State,SWAC,89.23,114.25,-25.02,Alcorn St.,Alcorn
+342,Arkansas-Pine Bluff,SWAC,86.78,117.54,-30.77,Arkansas-Pine Bluff,Ark.-Pine Bluff
+343,Delaware State,MEAC,88.61,116.88,-28.27,Delaware St.,Delaware St.
+344,South Carolina State,MEAC,82.91,115.61,-32.7,South Carolina St.,South Carolina St.
+345,Alabama State,SWAC,80.53,112.8,-32.27,Alabama St.,Alabama St.
+346,Chicago State,WAC,80.28,122.03,-41.75,Chicago St.,Chicago St.
+347,Mississippi Valley State,SWAC,75.83,125.82,-49.99,Mississippi Valley St.,Mississippi Val.
+348,Brown,Ivy,NA,NA,NA,Brown,Brown
+349,Columbia,Ivy,NA,NA,NA,Columbia,Columbia
+350,Cornell,Ivy,NA,NA,NA,Cornell,Cornell
+351,Dartmouth,Ivy,NA,NA,NA,Dartmouth,Dartmouth
+352,Harvard,Ivy,NA,NA,NA,Harvard,Harvard
+353,Maryland-Eastern Shore,MEAC,NA,NA,NA,Maryland-Eastern Shore,Maryland-Eastern Shore
+354,Pennsylvania,Ivy,NA,NA,NA,Pennsylvania,Pennsylvania
+355,Princeton,Ivy,NA,NA,NA,Princeton,Princeton
+356,Yale,Ivy,NA,NA,NA,Yale,Yale
