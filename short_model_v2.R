@@ -248,138 +248,147 @@ for(i in 1:nrow(team_games)) {
 
 # Tournament Data Structure ####
 
-start_ind <- data.frame(
-  Team = march_madness_teams,
-  Index = c(
-    # West Region
-    5,1,1,6,6,7,7,8,8,9,2,2,10,10,11,11,12,12,
-    # East Region
-    13,3,3,14,14,15,15,16,16,17,4,4,18,18,19,19,20,20,
-    # South Region
-    21,21,22,22,23,23,24,24,25,25,26,26,27,27,28,28,
-    # Midwest Region
-    29,29,30,30,31,31,32,32,33,33,34,34,35,35,36,36)
-)
-
-round_mapping <- data.frame(
-  Round = c(
-    rep("round0", 4),
-    rep("round1", 32),
-    rep("round2",16),
-    rep("round3", 8),
-    rep("round4", 4),
-    rep("round5", 2),
-    rep("round6", 1)
-  ),
-  Index = 1:67,
-  NextRound = c(
-    # Round 0
-    5,9,13,17,
-    # Round 1
-    # Round 2
-    rep(37:52, each = 2),
-    # Sweet 16
-    rep(53:60, each = 2),
-    # Elite 8
-    rep(61:64, each = 2),
-    # Final 4
-    rep(65:66, each = 2),
-    # Championship
-    67,67, NA
+build_bracket_df <- function() {
+  start_ind <- data.frame(
+    Team = march_madness_teams,
+    Index = c(
+      # West Region
+      5,1,1,6,6,7,7,8,8,9,2,2,10,10,11,11,12,12,
+      # East Region
+      13,3,3,14,14,15,15,16,16,17,4,4,18,18,19,19,20,20,
+      # South Region
+      21,21,22,22,23,23,24,24,25,25,26,26,27,27,28,28,
+      # Midwest Region
+      29,29,30,30,31,31,32,32,33,33,34,34,35,35,36,36)
   )
-)
-
-full_path <- start_ind %>%
-  left_join(round_mapping, by = c("Index")) %>%
-  left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound"="Index"), suffix = c("", "_2")) %>%
-  left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound_2"="Index"), suffix = c("", "_3")) %>%
-  left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound_3"="Index"), suffix = c("", "_4")) %>%
-  left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound_4"="Index"), suffix = c("", "_5")) %>%
-  left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound_5"="Index"), suffix = c("", "_6")) %>%
-  arrange(Index)
-
-full_path[9:68, 5:9] <- full_path[9:68, 4:8] 
-full_path[9:68, 4] <- full_path[9:68, 2]
-full_path[9:68, 2] <- 5:64
-
-full_path <- full_path %>%
-  select(Team, Rd0 = Index, Rd1 = NextRound, Rd2 = NextRound_2, Rd3 = NextRound_3, Rd4 = NextRound_4, Rd5 = NextRound_5, Rd6 = NextRound_6)
-
+  
+  round_mapping <- data.frame(
+    Round = c(
+      rep("round0", 4),
+      rep("round1", 32),
+      rep("round2",16),
+      rep("round3", 8),
+      rep("round4", 4),
+      rep("round5", 2),
+      rep("round6", 1)
+    ),
+    Index = 1:67,
+    NextRound = c(
+      # Round 0
+      5,9,13,17,
+      # Round 1
+      # Round 2
+      rep(37:52, each = 2),
+      # Sweet 16
+      rep(53:60, each = 2),
+      # Elite 8
+      rep(61:64, each = 2),
+      # Final 4
+      rep(65:66, each = 2),
+      # Championship
+      67,67, NA
+    )
+  )
+  
+  full_path <- start_ind %>%
+    left_join(round_mapping, by = c("Index")) %>%
+    left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound"="Index"), suffix = c("", "_2")) %>%
+    left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound_2"="Index"), suffix = c("", "_3")) %>%
+    left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound_3"="Index"), suffix = c("", "_4")) %>%
+    left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound_4"="Index"), suffix = c("", "_5")) %>%
+    left_join(round_mapping %>% select(Index, NextRound), by = c("NextRound_5"="Index"), suffix = c("", "_6")) %>%
+    arrange(Index)
+  
+  full_path[9:68, 5:9] <- full_path[9:68, 4:8] 
+  full_path[9:68, 4] <- full_path[9:68, 2]
+  full_path[9:68, 2] <- 5:64
+  
+  full_path <- full_path %>%
+    select(Team, Rd0 = Index, Rd1 = NextRound, Rd2 = NextRound_2, Rd3 = NextRound_3, Rd4 = NextRound_4, Rd5 = NextRound_5, Rd6 = NextRound_6)
+}
 
 # Tournament Calculation ####
 
 # Set up dataframe - cols need to be stored with NA for do() to work
-exact_prob <- full_path
-exact_prob$Rd0_Exact <- NA_real_
-exact_prob$Rd1_Exact <- NA_real_
-exact_prob$Rd2_Exact <- NA_real_
-exact_prob$Rd3_Exact <- NA_real_
-exact_prob$Rd4_Exact <- NA_real_
-exact_prob$Rd5_Exact <- NA_real_
-exact_prob$Rd6_Exact <- NA_real_
 
-# Calculate first 4 round probabilities
-exact_prob <- exact_prob %>%
-  group_by_at(2) %>%
-  do({
-    if(nrow(.) == 1) {
-      .$Rd0_Exact = 1
-    } else {
-      p = team_games$probability[which(team_games$team == .$Team[1] & team_games$opponent == .$Team[2])]
-      .$Rd0_Exact[1] = p
-      .$Rd0_Exact[2] = 1-p
-    }
-    .
-  }) 
-
-# Iterate through each round to calculate exact probability
-for(rnd in 1:6) {
+calculate_exact <- function(bracket_df, team_games) {
+  # bracket_df: dataframe for tournament sim created by build_bracket_df()
+  # team_games: dataframe of team predictions. Needs cols: team, opponent, probability
+  
+  exact_prob <- bracket_df
+  exact_prob$Rd0_Exact <- NA_real_
+  exact_prob$Rd1_Exact <- NA_real_
+  exact_prob$Rd2_Exact <- NA_real_
+  exact_prob$Rd3_Exact <- NA_real_
+  exact_prob$Rd4_Exact <- NA_real_
+  exact_prob$Rd5_Exact <- NA_real_
+  exact_prob$Rd6_Exact <- NA_real_
+  
+  # Calculate first 4 round probabilities
   exact_prob <- exact_prob %>%
-    # Group my bracket position
-    group_by_at(2+rnd) %>%
+    group_by_at(2) %>%
     do({
-      # If only one team, return 100%
       if(nrow(.) == 1) {
-        .[[paste0("Rd",rnd,"_Exact")]] = 1
+        .$Rd0_Exact = 1
       } else {
-        df = .
-        teams <- df$Team
-        # Calculate all possible matchup combinations
-        grid <- expand.grid(Tm1 = teams, Tm2 = teams, stringsAsFactors = F) %>%
-          arrange(Tm1) %>%
-          # Remove duplicate team against itself
-          filter(Tm1!=Tm2) %>%
-          mutate(
-            # Get bracket position of each team in the previous round
-            PrevRnd = df[[paste0("Rd",rnd-1)]][match(Tm1, df$Team)],
-            # Get probability team was "alive" in previous step
-            Psurvive = df[[paste0("Rd",rnd-1,"_Exact")]][match(Tm1, df$Team)]
-          ) %>%
-          # Join back the exact dataframe to get other team probabilities
-          left_join(df, by = c("Tm2"="Team")) %>%
-          # Filter when teams were in same branch in previous round
-          # ie. Gonzaga cannot play Appalachian St. in round 3 because they went through the same branch so only one could survive
-          filter(PrevRnd != .[[paste0("Rd",rnd-1)]]) %>%
-          # Pull the probabilities that each team wins against each opponent
-          group_by(Tm1) %>%
-          do({
-            games <- filter(team_games, team == first(.$Tm1))
-            p <- games$probability[match(.$Tm2, games$opponent)]
-            # New probability is P(Team Alive in previous round) * P(Opponent Alive in previous round) * P(Team beats Opponent)
-            exact <- sum(.[[paste0("Rd",rnd-1,"_Exact")]] * .$Psurvive * p)
-            # Return as single numeric wrapped in df to fit grip
-            data.frame(exact)
-          })
-        # Add round probabilities using the calculation above
-        .[[paste0("Rd",rnd,"_Exact")]] <- grid$exact[match(.$Team, grid$Tm1)]
+        p = team_games$probability[which(team_games$team == .$Team[1] & team_games$opponent == .$Team[2])]
+        .$Rd0_Exact[1] = p
+        .$Rd0_Exact[2] = 1-p
       }
-      # Return the original dataframe with the new row modifications to RdX_Exact
       .
-    })
-  print(rnd)
+    }) 
+  
+  # Iterate through each round to calculate exact probability
+  for(rnd in 1:6) {
+    exact_prob <- exact_prob %>%
+      # Group my bracket position
+      group_by_at(2+rnd) %>%
+      do({
+        # If only one team, return 100%
+        if(nrow(.) == 1) {
+          .[[paste0("Rd",rnd,"_Exact")]] = 1
+        } else {
+          df = .
+          teams <- df$Team
+          # Calculate all possible matchup combinations
+          grid <- expand.grid(Tm1 = teams, Tm2 = teams, stringsAsFactors = F) %>%
+            arrange(Tm1) %>%
+            # Remove duplicate team against itself
+            filter(Tm1!=Tm2) %>%
+            mutate(
+              # Get bracket position of each team in the previous round
+              PrevRnd = df[[paste0("Rd",rnd-1)]][match(Tm1, df$Team)],
+              # Get probability team was "alive" in previous step
+              Psurvive = df[[paste0("Rd",rnd-1,"_Exact")]][match(Tm1, df$Team)]
+            ) %>%
+            # Join back the exact dataframe to get other team probabilities
+            left_join(df, by = c("Tm2"="Team")) %>%
+            # Filter when teams were in same branch in previous round
+            # ie. Gonzaga cannot play Appalachian St. in round 3 because they went through the same branch so only one could survive
+            filter(PrevRnd != .[[paste0("Rd",rnd-1)]]) %>%
+            # Pull the probabilities that each team wins against each opponent
+            group_by(Tm1) %>%
+            do({
+              games <- filter(team_games, team == first(.$Tm1))
+              p <- games$probability[match(.$Tm2, games$opponent)]
+              # New probability is P(Team Alive in previous round) * P(Opponent Alive in previous round) * P(Team beats Opponent)
+              exact <- sum(.[[paste0("Rd",rnd-1,"_Exact")]] * .$Psurvive * p)
+              # Return as single numeric wrapped in df to fit grip
+              data.frame(exact)
+            })
+          # Add round probabilities using the calculation above
+          .[[paste0("Rd",rnd,"_Exact")]] <- grid$exact[match(.$Team, grid$Tm1)]
+        }
+        # Return the original dataframe with the new row modifications to RdX_Exact
+        .
+      })
+    print(rnd)
+  }
+  
+  return(exact_prob)
 }
 
-final_table <- exact_prob %>%
+final_table <- calculate_exact(build_bracket_df(), team_games) %>%
   ungroup() %>%
   select(Team, Rd0_Exact:Rd6_Exact) %>%
   mutate(
