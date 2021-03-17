@@ -140,7 +140,7 @@ seeds <- c(
   1,16,16,8,9,5,12,4,13,6,11,11,3,14,7,10,2,15,
   1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
   1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15
-  )
+)
 
 region <- c(
   rep("West", 18),
@@ -189,10 +189,10 @@ full_rating <- team_ratings %>%
     scaledORAPM = zORAPM * sd(ORtg) + mean(ORtg),
     scaledDRAPM = zDRAPM * sd(DRtg) + mean(DRtg)
   ) %>%
-filter(Team %in% march_madness_teams)
+  filter(Team %in% march_madness_teams)
 
 
-# Game Prediction ####
+# Game Predictions ####
 game_prediction <- function(df, model, teams_vector, tm1, tm2, printData = F, long = F) {
   # df: dataframe of team ratings
   # model: model to predict possessions
@@ -202,12 +202,12 @@ game_prediction <- function(df, model, teams_vector, tm1, tm2, printData = F, lo
   # printData: whether to print prediction output
   # long: whether to return all outputs of prediction vs. just probability
   exp_poss <- unname(predict(model,t(matrix((teams %in% c(tm1, tm2))*1)), type = "response")) / 2
-
+  
   # 97.12 = RAPM intercept
   tm1_score <- (df$ORAPM[df$Team == tm1] - df$DRAPM[df$Team  == tm2] + 97.12) * (exp_poss / 100)
   tm2_score <- (df$ORAPM[df$Team == tm2] - df$DRAPM[df$Team  == tm1] + 97.12) * (exp_poss / 100)
   # prob <- pnorm(tm1_score - tm2_score, 0, 6)
-
+  
   prob <- unname(predict(pointspread_glm, data.frame(pred_score_diff = tm1_score - tm2_score), type = "response"))
   
   if(!printData & !long) {
@@ -259,35 +259,35 @@ start_ind <- data.frame(
     21,21,22,22,23,23,24,24,25,25,26,26,27,27,28,28,
     # Midwest Region
     29,29,30,30,31,31,32,32,33,33,34,34,35,35,36,36)
-  )
+)
 
 round_mapping <- data.frame(
-    Round = c(
-      rep("round0", 4),
-      rep("round1", 32),
-      rep("round2",16),
-      rep("round3", 8),
-      rep("round4", 4),
-      rep("round5", 2),
-      rep("round6", 1)
-    ),
-    Index = 1:67,
-    NextRound = c(
-      # Round 0
-      5,9,13,17,
-      # Round 1
-      # Round 2
-      rep(37:52, each = 2),
-      # Sweet 16
-      rep(53:60, each = 2),
-      # Elite 8
-      rep(61:64, each = 2),
-      # Final 4
-      rep(65:66, each = 2),
-      # Championship
-      67,67, NA
-    )
+  Round = c(
+    rep("round0", 4),
+    rep("round1", 32),
+    rep("round2",16),
+    rep("round3", 8),
+    rep("round4", 4),
+    rep("round5", 2),
+    rep("round6", 1)
+  ),
+  Index = 1:67,
+  NextRound = c(
+    # Round 0
+    5,9,13,17,
+    # Round 1
+    # Round 2
+    rep(37:52, each = 2),
+    # Sweet 16
+    rep(53:60, each = 2),
+    # Elite 8
+    rep(61:64, each = 2),
+    # Final 4
+    rep(65:66, each = 2),
+    # Championship
+    67,67, NA
   )
+)
 
 full_path <- start_ind %>%
   left_join(round_mapping, by = c("Index")) %>%
@@ -304,59 +304,91 @@ full_path[9:68, 2] <- 5:64
 
 full_path <- full_path %>%
   select(Team, Rd0 = Index, Rd1 = NextRound, Rd2 = NextRound_2, Rd3 = NextRound_3, Rd4 = NextRound_4, Rd5 = NextRound_5, Rd6 = NextRound_6)
-  
 
-# Tournament Sim ####
 
-run_sim <- function(x) {
-  sim_df <- full_path
-  result <- matrix(, nrow = 68, ncol = 7)
-  
-  for(rnd in 0:6) {
-    sim_df <- sim_df %>%
-      group_by_at(2) %>%
-      do({
-        if(nrow(.) == 1) {
-          .
-        } else {
-          # p = game_prediction(full_rating, model, teams, .$Team[1], .$Team[2], F, F)
-          p = team_games$probability[which(team_games$team == .$Team[1] & team_games$opponent == .$Team[2])]
-          if(rbernoulli(1, p)) {
-            .[1,]
-          } else {
-            .[2,]
-          }
-        }
-      }) %>%
-      ungroup() %>%
-      select(-2)
-    result[,round+1] <- full_path$Team %in% sim_df$Team
-  }
-  return(result)
+# Tournament Calculation ####
+
+# Set up dataframe - cols need to be stored with NA for do() to work
+exact_prob <- full_path
+exact_prob$Rd0_Exact <- NA_real_
+exact_prob$Rd1_Exact <- NA_real_
+exact_prob$Rd2_Exact <- NA_real_
+exact_prob$Rd3_Exact <- NA_real_
+exact_prob$Rd4_Exact <- NA_real_
+exact_prob$Rd5_Exact <- NA_real_
+exact_prob$Rd6_Exact <- NA_real_
+
+# Calculate first 4 round probabilities
+exact_prob <- exact_prob %>%
+  group_by_at(2) %>%
+  do({
+    if(nrow(.) == 1) {
+      .$Rd0_Exact = 1
+    } else {
+      p = team_games$probability[which(team_games$team == .$Team[1] & team_games$opponent == .$Team[2])]
+      .$Rd0_Exact[1] = p
+      .$Rd0_Exact[2] = 1-p
+    }
+    .
+  }) 
+
+# Iterate through each round to calculate exact probability
+for(rnd in 1:6) {
+  exact_prob <- exact_prob %>%
+    # Group my bracket position
+    group_by_at(2+rnd) %>%
+    do({
+      # If only one team, return 100%
+      if(nrow(.) == 1) {
+        .[[paste0("Rd",rnd,"_Exact")]] = 1
+      } else {
+        df = .
+        teams <- df$Team
+        # Calculate all possible matchup combinations
+        grid <- expand.grid(Tm1 = teams, Tm2 = teams, stringsAsFactors = F) %>%
+          arrange(Tm1) %>%
+          # Remove duplicate team against itself
+          filter(Tm1!=Tm2) %>%
+          mutate(
+            # Get bracket position of each team in the previous round
+            PrevRnd = df[[paste0("Rd",rnd-1)]][match(Tm1, df$Team)],
+            # Get probability team was "alive" in previous step
+            Psurvive = df[[paste0("Rd",rnd-1,"_Exact")]][match(Tm1, df$Team)]
+          ) %>%
+          # Join back the exact dataframe to get other team probabilities
+          left_join(df, by = c("Tm2"="Team")) %>%
+          # Filter when teams were in same branch in previous round
+          # ie. Gonzaga cannot play Appalachian St. in round 3 because they went through the same branch so only one could survive
+          filter(PrevRnd != .[[paste0("Rd",rnd-1)]]) %>%
+          # Pull the probabilities that each team wins against each opponent
+          group_by(Tm1) %>%
+          do({
+            games <- filter(team_games, team == first(.$Tm1))
+            p <- games$probability[match(.$Tm2, games$opponent)]
+            # New probability is P(Team Alive in previous round) * P(Opponent Alive in previous round) * P(Team beats Opponent)
+            exact <- sum(.[[paste0("Rd",rnd-1,"_Exact")]] * .$Psurvive * p)
+            # Return as single numeric wrapped in df to fit grip
+            data.frame(exact)
+          })
+        # Add round probabilities using the calculation above
+        .[[paste0("Rd",rnd,"_Exact")]] <- grid$exact[match(.$Team, grid$Tm1)]
+      }
+      # Return the original dataframe with the new row modifications to RdX_Exact
+      .
+    })
+  print(rnd)
 }
 
-num_cores <- detectCores() - 1
-cl <- parallel::makeCluster(num_cores, setup_timeout = 0.5)
-clusterExport(cl = cl, varlist = c('full_path', 'team_games', 'rbernoulli'), envir = environment())
-clusterEvalQ(cl, library(dplyr))
-clusterEvalQ(cl, library(glmnet))
-n_sims <- 1000
-a = Sys.time()
-simulation <- parLapply(cl, 1:n_sims, run_sim)
-Sys.time() - a
-stopCluster(cl)
-
-bracket_distribution <- Reduce('+', simulation) / n_sims
-
-final_table <- full_path %>%
-  select(Team) %>%
-  cbind(bracket_distribution) %>%
+final_table <- exact_prob %>%
+  ungroup() %>%
+  select(Team, Rd0_Exact:Rd6_Exact) %>%
   mutate(
-    across(matches("[0-9]"), ~ round(.x*100, 1)),
+    across(matches("[0-9]"), ~ round(.x*100, 3)),
     Seed = seeds[match(Team, march_madness_teams)],
     Region = region[match(Team, march_madness_teams)]
   ) %>%
-  select(Region, Seed, everything())
+  select(Region, Seed, Team, 
+         First4 = Rd0_Exact, Round1 = Rd1_Exact, Round2 = Rd2_Exact, Sweet16 = Rd3_Exact, Elite8 = Rd4_Exact, Final4 = Rd5_Exact, Championship = Rd6_Exact)
 
 # write_csv(final_table, "data/table_predictions.csv")
 
