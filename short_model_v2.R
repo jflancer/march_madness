@@ -9,6 +9,7 @@ load("data/poss_model.rda")
 cbb_ref <- read_csv("data/bballrefteam.csv")
 load("data/team_vec.rda")
 pointspread_glm <- readRDS("data/glm_pointspread.rds")
+mins <- read_csv("data/mins_proj.csv")
 
 # Manual Data ####
 
@@ -149,25 +150,47 @@ region <- c(
 )
 
 # Team Model ####
-team_depth <- all_data %>%
+# team_depth <- all_data %>%
+#   filter(!(
+#     paste0(cleanName, "_", Team) %in% injuries &
+#       Season == "2020-21"
+#   )) %>%
+#   mutate(
+#     PctMins = pmin(MINS / (GP*40),1)
+#   ) %>%
+#   group_by(Team, Season) %>%
+#   slice_max(n=9, order_by = PctMins) %>%
+#   mutate(
+#     POSS. = pmin(PctMins / sum(PctMins), .2),
+#     ExtraProb = 1 - sum(POSS.),
+#     Non20 = sum(POSS. * (POSS. != .2)),
+#     AddAmount = ifelse(POSS. == .2, 0, (POSS. / Non20) * ExtraProb),
+#     PCT_Full = POSS. + AddAmount
+#   )
+
+team_depth <- mins %>%
+  left_join(all_data %>% filter(Season == "2020-21") %>% mutate(Player = paste0(Player, "_", Team)), by = c("Player", "Team")) %>%
   filter(!(
     paste0(cleanName, "_", Team) %in% injuries &
       Season == "2020-21"
   )) %>%
   mutate(
-    PctMins = pmin(MINS / (GP*40),1)
+    PctMins = pmin(MINS.x / (GP.x*40),1)
   ) %>%
-  group_by(Team, Season) %>%
-  slice_max(n=9, order_by = PctMins) %>%
+  group_by(Team) %>%
+  slice_max(n=8, order_by = PctMins) %>%
   mutate(
     POSS. = pmin(PctMins / sum(PctMins), .2),
     ExtraProb = 1 - sum(POSS.),
     Non20 = sum(POSS. * (POSS. != .2)),
     AddAmount = ifelse(POSS. == .2, 0, (POSS. / Non20) * ExtraProb),
     PCT_Full = POSS. + AddAmount
-  )
+  ) %>%
+  filter(Season == "2020-21") %>%
+  select(Player, Team, GP = GP.y, MINS = MINS.y, PCT_Full, ORAPM:RAPM)
 
-team_ratings <- team_depth %>%
+full_rating <- team_depth %>%
+  group_by(Team) %>%
   summarise(
     ORAPM = sum(ORAPM * PCT_Full, na.rm = T)*5,
     DRAPM = sum(DRAPM * PCT_Full, na.rm = T)*5,
@@ -177,8 +200,7 @@ team_ratings <- team_depth %>%
     RAPM = ORAPM + DRAPM
   )
 
-full_rating <- team_ratings %>%
-  filter(Season == "2020-21")
+write_csv(full_rating, "data/team_ratings.csv")
 
 # Game Predictions ####
 game_prediction <- function(df, model, teams_vector, tm1, tm2, printData = F, long = F) {
@@ -196,7 +218,7 @@ game_prediction <- function(df, model, teams_vector, tm1, tm2, printData = F, lo
   tm2_score <- (df$ORAPM[df$Team == tm2] - df$DRAPM[df$Team  == tm1] + 97.12) * (exp_poss / 100)
 
   # prob <- unname(predict(pointspread_glm, data.frame(pred_score_diff = tm1_score - tm2_score), type = "response"))
-  prob <- pnorm(tm1_score - tm2_score, 0, 11.5)
+  prob <- pnorm(tm1_score - tm2_score, 0, 11.7)
   
   if(!printData & !long) {
     return(prob) 
@@ -214,7 +236,7 @@ game_prediction <- function(df, model, teams_vector, tm1, tm2, printData = F, lo
   }
 }
 
-result = game_prediction(full_rating, model, teams, "Houston", "Illinois", T, F)
+result = game_prediction(full_rating, model, teams, "Texas Tech", "Ohio St.", T, F)
 
 team_games <- expand.grid(team = march_madness_teams, opponent = march_madness_teams)
 team_games$team_score <- NA
@@ -233,6 +255,7 @@ for(i in 1:nrow(team_games)) {
   team_games$probability[i] <- vals[5]
 }
 
+write_csv(team_games, "data/game_predictions.csv")
 
 # Tournament Data Structure ####
 
@@ -388,7 +411,7 @@ final_table <- calculate_exact(build_bracket_df(), team_games) %>%
   select(Region, Seed, Team, 
          First4 = Rd0_Exact, Round1 = Rd1_Exact, Round2 = Rd2_Exact, Sweet16 = Rd3_Exact, Elite8 = Rd4_Exact, Final4 = Rd5_Exact, Championship = Rd6_Exact)
 
-# write_csv(final_table, "data/table_predictions.csv")
+write_csv(final_table, "data/table_predictions.csv")
 
 # benz <- read_csv("/Users/jake/Downloads/ncaa_wp_matrix_2021.csv")
 # 
