@@ -1,7 +1,6 @@
 # Load libraries ####
 library(tidyverse)
 library(glmnet)
-library(parallel)
 
 # Load Data ####
 
@@ -28,8 +27,8 @@ injuries <- c(
   # "Jaden Seymour_Wichita St.", #Questionable
   # "Trevin Wade_Wichita St.", #Questionable
   # "Shereef Mitchell_Creighton", #Questionable
-  
-  
+  "De'Vion Harmon_Oklahoma", #COVID tbd
+  "Moses Wright_Georgia Tech", # Out first two rounds
   "Jaylin Williams_Arkansas", #Out indefinitely
   "Khalen Robinson_Arkansas", #Out for season
   "Roman Penn_Drake", #Out for season
@@ -170,8 +169,8 @@ team_depth <- all_data %>%
 
 team_ratings <- team_depth %>%
   summarise(
-    ORAPM = sum(ORAPM * POSS., na.rm = T)*5,
-    DRAPM = sum(DRAPM * POSS., na.rm = T)*5,
+    ORAPM = sum(ORAPM * PCT_Full, na.rm = T)*5,
+    DRAPM = sum(DRAPM * PCT_Full, na.rm = T)*5,
     .groups = "drop"
   ) %>%
   mutate(
@@ -179,18 +178,7 @@ team_ratings <- team_depth %>%
   )
 
 full_rating <- team_ratings %>%
-  filter(Season == "2020-21") %>%
-  left_join(cbb_ref, by = c("Team"="NCAA_Name_2")) %>%
-  mutate(
-    zORAPM = (ORAPM - mean(ORAPM)) / sd(ORAPM),
-    zDRAPM = (DRAPM - mean(DRAPM)) / sd(DRAPM),
-    ORtg = ORtg - mean(ORtg),
-    DRtg = -(DRtg - mean(DRtg)),
-    scaledORAPM = zORAPM * sd(ORtg) + mean(ORtg),
-    scaledDRAPM = zDRAPM * sd(DRtg) + mean(DRtg)
-  ) %>%
-  filter(Team %in% march_madness_teams)
-
+  filter(Season == "2020-21")
 
 # Game Predictions ####
 game_prediction <- function(df, model, teams_vector, tm1, tm2, printData = F, long = F) {
@@ -203,12 +191,12 @@ game_prediction <- function(df, model, teams_vector, tm1, tm2, printData = F, lo
   # long: whether to return all outputs of prediction vs. just probability
   exp_poss <- unname(predict(model,t(matrix((teams %in% c(tm1, tm2))*1)), type = "response")) / 2
   
-  # 97.12 = RAPM intercept
+  # 97.12 = RAPM intercept for 20-21
   tm1_score <- (df$ORAPM[df$Team == tm1] - df$DRAPM[df$Team  == tm2] + 97.12) * (exp_poss / 100)
   tm2_score <- (df$ORAPM[df$Team == tm2] - df$DRAPM[df$Team  == tm1] + 97.12) * (exp_poss / 100)
-  # prob <- pnorm(tm1_score - tm2_score, 0, 6)
-  
-  prob <- unname(predict(pointspread_glm, data.frame(pred_score_diff = tm1_score - tm2_score), type = "response"))
+
+  # prob <- unname(predict(pointspread_glm, data.frame(pred_score_diff = tm1_score - tm2_score), type = "response"))
+  prob <- pnorm(tm1_score - tm2_score, 0, 11.5)
   
   if(!printData & !long) {
     return(prob) 
@@ -226,7 +214,7 @@ game_prediction <- function(df, model, teams_vector, tm1, tm2, printData = F, lo
   }
 }
 
-game_prediction(full_rating, model, teams, "Gonzaga", "Baylor", T, F)
+result = game_prediction(full_rating, model, teams, "Houston", "Illinois", T, F)
 
 team_games <- expand.grid(team = march_madness_teams, opponent = march_madness_teams)
 team_games$team_score <- NA
@@ -309,12 +297,11 @@ build_bracket_df <- function() {
 
 # Tournament Calculation ####
 
-# Set up dataframe - cols need to be stored with NA for do() to work
-
 calculate_exact <- function(bracket_df, team_games) {
   # bracket_df: dataframe for tournament sim created by build_bracket_df()
   # team_games: dataframe of team predictions. Needs cols: team, opponent, probability
   
+  # Set up dataframe - cols need to be stored with NA for do() to work
   exact_prob <- bracket_df
   exact_prob$Rd0_Exact <- NA_real_
   exact_prob$Rd1_Exact <- NA_real_
@@ -388,6 +375,8 @@ calculate_exact <- function(bracket_df, team_games) {
   return(exact_prob)
 }
 
+# Output ####
+
 final_table <- calculate_exact(build_bracket_df(), team_games) %>%
   ungroup() %>%
   select(Team, Rd0_Exact:Rd6_Exact) %>%
@@ -401,17 +390,17 @@ final_table <- calculate_exact(build_bracket_df(), team_games) %>%
 
 # write_csv(final_table, "data/table_predictions.csv")
 
-benz <- read_csv("/Users/jake/Downloads/ncaa_wp_matrix_2021.csv")
-
-benz$team <- ifelse(benz$team == "Mount St. Mary's", "Mt. St. Mary's", benz$team)
-benz$opponent <- ifelse(benz$opponent == "Mount St. Mary's", "Mt. St. Mary's", benz$opponent)
-
-benz2 <- left_join(benz, team_games, by = c("team", "opponent"))
-
-ggplot(benz2, aes(pred_score_diff, differential)) + geom_point() + geom_abline(slope = 1, intercept = 0) + geom_smooth()
-ggplot(benz2, aes(win_prob, probability)) + geom_point() + geom_abline(slope = 1, intercept = 0) + geom_smooth()
-
-x = filter(benz2, team == 'Gonzaga') %>% select(team, opponent, Luke_Differential = pred_score_diff, Jake_Differential=differential, Luke_Prob = win_prob, Jake_Prob = probability)
-
-
-
+# benz <- read_csv("/Users/jake/Downloads/ncaa_wp_matrix_2021.csv")
+# 
+# benz$team <- ifelse(benz$team == "Mount St. Mary's", "Mt. St. Mary's", benz$team)
+# benz$opponent <- ifelse(benz$opponent == "Mount St. Mary's", "Mt. St. Mary's", benz$opponent)
+# 
+# benz2 <- left_join(benz, team_games, by = c("team", "opponent"))
+# 
+# ggplot(benz2, aes(pred_score_diff, differential)) + geom_point() + geom_abline(slope = 1, intercept = 0) + geom_smooth()
+# ggplot(benz2, aes(win_prob, probability)) + geom_point() + geom_abline(slope = 1, intercept = 0) + geom_smooth()
+# 
+# x = filter(benz2, team == 'Gonzaga') %>% select(team, opponent, Luke_Differential = pred_score_diff, Jake_Differential=differential, Luke_Prob = win_prob, Jake_Prob = probability)
+# 
+# 
+# 
